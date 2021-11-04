@@ -69,3 +69,38 @@ for (let key in item){
   `; 
   container.append(itemHtml);
 }
+
+// prendere gli input dal form e inserirli in un oggetto da pushare nell'array item
+
+
+// creare un evento che mi permette di prendere le info dal form tramite la pressione del bottone
+document.getElementById('addMemberButton').addEventListener('click',function(){
+  const foto = document.getElementById('image').value;
+  const ruolo = document.getElementById('role').value;
+  const nome = document.getElementById('name').value;
+
+  item.push({foto,ruolo,nome})
+  console.log(item)
+  container.innerHTML = '';
+
+  for (let key in item){
+    const itemHtml = document.createElement('div');
+    itemHtml.className='team-card'
+    itemHtml.innerHTML = `
+    
+    <div class="card-image">
+      <img
+        src="${item[key].foto}"
+        alt="Wayne Barnett"
+      />
+    </div>
+    <div class="card-text">
+      <h3>${item[key].nome}</h3>
+      <p>${item[key].ruolo}</p>
+    </div>
+
+    `; 
+    container.append(itemHtml);
+  }
+  });
+// inserire i valori che mi passa il form
